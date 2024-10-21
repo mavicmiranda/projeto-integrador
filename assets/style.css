@@ -301,10 +301,12 @@ table{
       height:80px;
     
     }
-
+    
+    /*--- Para definir um tamanho padrão para os icones sociais ---*/
     footer div div a img {
       width:100px;
-      margin-top: 20px;
+      padding-top: 20px;
 
     }
+
      
