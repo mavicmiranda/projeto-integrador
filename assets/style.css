@@ -190,7 +190,7 @@ main {
   color: #333;
   /* Cor de texto mais suave */
   padding: 10px 0;
-  max-width: 800px;
+  max-width: 95%;
   /* Limita a largura do parágrafo */
   margin: 0 auto;
   /* Centraliza o texto */
@@ -230,10 +230,11 @@ h1 {
 
 
 .container {
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items: start; 
   /* Alinha verticalmente no centro */
-  gap: 20px;
+  /* gap: 20px; */
+  max-width: 95%;
   /* Espaçamento entre a imagem e o texto */
 }
 
@@ -428,3 +429,10 @@ footer span {
   color: #333;
   margin-bottom: 5px;
 }
+
+.faq-body {
+  display: none;
+}
+
+
+

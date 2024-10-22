@@ -13,16 +13,174 @@
       .then(data => {
         document.querySelector("footer").innerHTML = data;
       });
+
+    const faqHeaders = document.querySelectorAll('.faq-header');
+
+    faqHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const faqBody = header.nextElementSibling;
+
+        if (faqBody.style.display === 'none' || faqBody.style.display === '') {
+          faqBody.style.display = 'block';
+        } else {
+          faqBody.style.display = 'none';
+        }
+      });
+    });
   });
 </script>
+
+<style>
+  /* Formulário de Contato */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1em;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="submit"] {
+  background-color: #2e8b57;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #246e45;
+}
+
+/* Perguntas Frequentes */
+div {
+  margin-bottom: 30px;
+}
+
+div h3 {
+  cursor: pointer;
+  padding: 10px;
+  background-color: #2e8b57;
+  color: white;
+  border-radius: 4px;
+}
+
+div p {
+  display: none;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-left: 4px solid #2e8b57;
+  margin-top: -5px;
+  border-radius: 0 4px 4px 4px;
+}
+
+div h3:hover {
+  background-color: #246e45;
+}
+
+/* Suporte */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+ul li a {
+  color: #2e8b57;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Sobre a Equipe */
+p {
+  margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+      width: 95%;
+      padding: 10px;
+  }
+
+  h2 {
+      font-size: 1.6em;
+  }
+
+  h3 {
+      font-size: 1.2em;
+  }
+
+  input[type="submit"] {
+      font-size: 1em;
+  }
+}
+
+</style>
 
 <body>
   <header></header>
 
   <main>
-    <p>Conteúdo principal da página.</p>
-  </main>
+    <h2>Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h3 class="faq-header">Como doar?</h3>
+      <p class="faq-body">Você pode fazer doações através da nossa página de doações, escolhendo a campanha que deseja
+        apoiar.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-header">Quais são as formas de pagamento aceitas?</h3>
+      <p class="faq-body">Aceitamos pagamentos via cartão de crédito, débito, Pix e transferências bancárias.</p>
+    </div>
+    <div class="faq-item">
+      <h3 class="faq-header">Como é garantida a privacidade das minhas informações?</h3>
+      <p class="faq-body">Nosso site utiliza criptografia para proteger suas informações pessoais e financeiras.
+        Consulte nossa <a href="privacy-policy">Política de Privacidade</a> para mais detalhes.</p>
+    </div>
 
+    <section class="contact-page">
+      <h2>Formulário de Contato</h2>
+      <form action="/submit-form" method="post">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name" required><br>
+    
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br>
+    
+        <label for="message">Mensagem:</label><br>
+        <textarea id="message" name="message" rows="5" cols="40" required></textarea><br>
+    
+        <input type="submit" value="Enviar">
+      </form>
+    </section>
+
+  </main>
   <footer></footer>
 </body>
 
