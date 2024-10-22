@@ -309,4 +309,39 @@ table{
 
     }
 
+     /* ---- estilização para impacto.html ---- */
+
+     .impacto {
+      font-size: 38px;
+
+     }
+
+     .destaque-impacto {
+      width:80%;
+      height:200px;
+      display:inline;
+      border: solid 1px black;
+
+     }
+
+     .table-impacto {
+      width:95%;
+      background-color: lightgrey;
+      font-size: 32px;
+     }
+
+     td img {
+      width: 300px;
+
+     }
+
+     tr {
+      border: solid 2px black;
+
+     }
+
+
+     td {
+      padding:10px;
+     }
      
