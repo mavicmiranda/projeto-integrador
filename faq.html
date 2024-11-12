@@ -31,117 +31,68 @@
 </script>
 
 <style>
-  /* Formulário de Contato */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 
-label {
-  font-weight: bold;
-}
 
-input[type="text"],
-input[type="email"],
-textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 1em;
-}
+  div h3 {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #2e8b57;
+    color: white;
+    border-radius: 4px;
+  }
 
-textarea {
-  resize: vertical;
-}
+  div p {
+    display: none;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-left: 4px solid #2e8b57;
+    margin-top: -5px;
+    border-radius: 0 4px 4px 4px;
+  }
 
-input[type="submit"] {
-  background-color: #2e8b57;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: background-color 0.3s ease;
-}
+  div h3:hover {
+    background-color: #246e45;
+  }
 
-input[type="submit"]:hover {
-  background-color: #246e45;
-}
+  /* Suporte */
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-/* Perguntas Frequentes */
-div {
-  margin-bottom: 30px;
-}
+  ul li {
+    margin: 10px 0;
+    font-size: 1.1em;
+  }
 
-div h3 {
-  cursor: pointer;
-  padding: 10px;
-  background-color: #2e8b57;
-  color: white;
-  border-radius: 4px;
-}
+  ul li a {
+    color: #2e8b57;
+    text-decoration: none;
+    font-weight: bold;
+  }
 
-div p {
-  display: none;
-  padding: 10px;
-  background-color: #f9f9f9;
-  border-left: 4px solid #2e8b57;
-  margin-top: -5px;
-  border-radius: 0 4px 4px 4px;
-}
+  ul li a:hover {
+    text-decoration: underline;
+  }
 
-div h3:hover {
-  background-color: #246e45;
-}
-
-/* Suporte */
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-ul li {
-  margin: 10px 0;
-  font-size: 1.1em;
-}
-
-ul li a {
-  color: #2e8b57;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Sobre a Equipe */
-p {
-  margin: 10px 0;
-}
-
-@media (max-width: 768px) {
-  .container {
+  @media (max-width: 768px) {
+    .container {
       width: 95%;
       padding: 10px;
-  }
+    }
 
-  h2 {
+    h2 {
       font-size: 1.6em;
-  }
+    }
 
-  h3 {
+    h3 {
       font-size: 1.2em;
-  }
+    }
 
-  input[type="submit"] {
+    input[type="submit"] {
       font-size: 1em;
+    }
   }
-}
-
 </style>
 
 <body>
@@ -164,24 +115,85 @@ p {
         Consulte nossa <a href="privacy-policy">Política de Privacidade</a> para mais detalhes.</p>
     </div>
 
+
     <section class="contact-page">
-      <h2>Formulário de Contato</h2>
-      <form action="/submit-form" method="post">
-        <label for="name">Nome:</label>
-        <input type="text" id="name" name="name" required><br>
-    
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
-    
-        <label for="message">Mensagem:</label><br>
-        <textarea id="message" name="message" rows="5" cols="40" required></textarea><br>
-    
-        <input type="submit" value="Enviar">
-      </form>
+      <h2>Não encontrou a resposta para sua pergunta? Entre em contato conosco preenchendo o formulário abaixo. Nossa
+        equipe está pronta para ajudar!</h2>
+
+      <div class="form-container">
+        <form id="contactForm" action="/submit-form" method="post">
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Mensagem:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <input type="submit" value="Enviar">
+        </form>
+
+        <!-- Mensagens de erro e sucesso -->
+        <p id="error-message" style="color: red; display: none;"></p>
+        <p id="success-message" style="color: green; display: none;">Formulário enviado!</p>
+      </div>
     </section>
 
-  </main>
-  <footer></footer>
-</body>
+    <script>
+      const form = document.getElementById("contactForm");
+      const nameInput = document.getElementById("name");
+      const emailInput = document.getElementById("email");
+      const messageInput = document.getElementById("message");
+      const errorMessage = document.getElementById("error-message");
+      const successMessage = document.getElementById("success-message");
 
-</html>
+      form.addEventListener("submit", function (event) {
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        // Validação de nome: pelo menos 3 caracteres
+        if (name.length < 3) {
+          errorMessage.textContent = "O nome deve ter pelo menos 3 caracteres.";
+          errorMessage.style.display = "block";
+          event.preventDefault();
+          return;
+        }
+
+        // Validação de email: regex básico para verificar o formato
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          errorMessage.textContent = "Por favor, insira um email válido.";
+          errorMessage.style.display = "block";
+          event.preventDefault();
+          return;
+        }
+
+        // Validação de mensagem: não pode estar vazia
+        if (message.length === 0) {
+          errorMessage.textContent = "Por favor, insira uma mensagem.";
+          errorMessage.style.display = "block";
+          event.preventDefault();
+          return;
+        }
+
+        // Limpa a mensagem de erro se todos os campos estiverem corretos
+        errorMessage.style.display = "none";
+        successMessage.style.display = "block";
+
+        // Aguarda 3 segundos antes de recarregar a página
+        setTimeout(function () {
+          location.reload();
+        }, 3000);
+
+        event.preventDefault(); // Apenas para testes; remova essa linha em produção
+      });
+
+      // Remover a mensagem de erro do campo "Nome" ao corrigir
+      nameInput.addEventListener("input", function () {
+        if (nameInput.value.trim().length >= 3) {
+          errorMessage.style.display = "none";
+        }
+      });
+    </script>

@@ -5,7 +5,7 @@
 main {
   font-family: 'Montserrat', sans-serif;
   /* Aplica Montserrat a toda a página */
-  padding: 30px;
+  padding: 50px;
   background: #f1f1f1;
 }
 
@@ -194,29 +194,6 @@ main {
   /* Limita a largura do parágrafo */
   margin: 0 auto;
   /* Centraliza o texto */
-}
-
-/* Estilo para a seção "Valores" */
-.values-section {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  /* Grid responsivo com colunas ajustáveis */
-  gap: 20px;
-  /* Espaçamento entre os valores */
-  margin-top: 20px;
-}
-
-.value-item {
-  background-color: #f2f2f2;
-  /* Fundo suave */
-  padding: 15px;
-  text-align: center;
-  border-radius: 10px;
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #333;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  /* Sombra suave */
 }
 
 /* Estilo para os títulos */
@@ -435,4 +412,132 @@ footer span {
 }
 
 
+.values-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centraliza os itens */
+}
+
+.value-item {
+  width: 150px;
+  height: 100px;
+  perspective: 1000px;
+  position: relative;
+}
+
+.value-item > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  transition: transform 0.6s;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.value-front {
+  background-color: #f0f0f0;
+}
+
+.value-back {
+  background-color: #d1e7dd;
+  color: #333;
+  transform: rotateY(180deg);
+}
+
+.value-item:hover .value-front {
+  transform: rotateY(180deg);
+}
+
+.value-item:hover .value-back {
+  transform: rotateY(0deg);
+}
+
+
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+    /* Caixa arredondada ao redor do formulário */
+    .form-container {
+      width: 100%;
+      max-width: 1500px;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: #f9f9f9;
+  }
+
+
+/* Estilização do título */
+.contact-page h2 {
+  text-align: center;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Estilização do formulário */
+#contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1500px;
+  width: 100%;
+}
+
+/* Estilização dos labels */
+label {
+  font-size: 1em;
+  color: #555;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-align: left;
+  width: 100%;
+}
+
+/* Reduz o tamanho dos inputs e textarea */
+input[type="text"], input[type="email"], textarea {
+  width: 100%;
+  max-width: 1500px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+}
+
+/* Estilização do botão de envio */
+input[type="submit"] {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  background-color: #37836f;
+  color: white;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #37836f;
+}
+
+/* Mensagens de erro e sucesso */
+#error-message, #success-message {
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 10px;
+}
 
