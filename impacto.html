@@ -1,62 +1,61 @@
 <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Carrega o header
-      fetch("include/header.html")
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector("header").innerHTML = data;
-        });
-  
-      // Carrega o footer
-      fetch("include/footer.html")
-        .then(response => response.text())
-        .then(data => {
-          document.querySelector("footer").innerHTML = data;
-        });
-    });
-  </script>
-  
-  <body>
-    <header></header>
-  
-    <main>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Carrega o header
+    fetch("include/header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.querySelector("header").innerHTML = data;
+      });
 
-      <p class="impacto"><b>Impacto</b></p>
+    // Carrega o footer
+    fetch("include/footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.querySelector("footer").innerHTML = data;
+      });
+  });
+</script>
 
-      <table class="table-impacto">
+<body>
+  <header></header>
 
-        <tr>
-          
-          <td><img src="assets/impacto.png" Alt="Doações Impacto"></td>
+  <main>
 
-          <td>
-            <p><b>RS recebe casacos da campanha 25!</b></p>
-            <p><span style="color: rgb(140, 140, 140)">10 de Setembro</span></p><br>
-            <p>Faça parte desse movimento de cooperação e solidariedade. Juntos pelo Rio Grande do Sul. </p>
-            <p style="font-family: Cambria">"Quando cada um faz um pouco, o pouco de muitos se soma."<p>
-          </td>
+    <p class="impacto"><b>Impacto</b></p>
 
-        </tr>
+    <table class="table-impacto">
+      <tr>
 
-        <tr>
-          
-          <td><img src="assets/campanha_brinquedos_b.png" Alt="Doação dia das crianças"></td>
+        <td><img src="assets/campanha_brinquedos_b.png" Alt="Doação dia das crianças"></td>
 
-          <td>
-            <p><b>Ajude na doação de brinquedos para crianças carentes.</b></p>
-            <p><span style="color: rgb(140, 140, 140)">12 de Outubro</span></p><br>
-            <p>Doe um brinquedo e coloque um sorriso no rosto de uma criança!</p>
-          </td>
+        <td>
+          <p><b>Ajude na doação de brinquedos para crianças carentes.</b></p>
+          <p><span style="color: rgb(140, 140, 140)">12 de Outubro</span></p><br>
+          <p>Doe um brinquedo e coloque um sorriso no rosto de uma criança!</p>
+        </td>
+      </tr>
 
+      <tr>
 
-        </tr>
+        <td><img src="assets/impacto.png" Alt="Doações Impacto"></td>
 
-      </table>
-    </main>
+        <td>
+          <p><b>RS recebe casacos da campanha 25!</b></p>
+          <p><span style="color: rgb(140, 140, 140)">10 de Setembro</span></p><br>
+          <p>Faça parte desse movimento de cooperação e solidariedade. Juntos pelo Rio Grande do Sul. </p>
+          <p style="font-family: Cambria">"Quando cada um faz um pouco, o pouco de muitos se soma."
+          <p>
+        </td>
+
+      </tr>
 
 
-  
-    <footer></footer>
-  </body>
-  
-  </html>
+    </table>
+  </main>
+
+
+
+  <footer></footer>
+</body>
+
+</html>
