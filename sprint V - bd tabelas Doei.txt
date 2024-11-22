@@ -1,11 +1,11 @@
 -- Tabela Categoria
-CREATE TABLE Categoria (
+CREATE TABLE categoria (
     id_categoria SERIAL PRIMARY KEY,
     nome VARCHAR(50) NOT NULL
 );
 
 -- Tabela ONG
-CREATE TABLE ONG (
+CREATE TABLE ong (
     id_ong SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     descricao TEXT,
@@ -14,7 +14,7 @@ CREATE TABLE ONG (
 );
 
 -- Tabela Usuário
-CREATE TABLE Usuario (
+CREATE TABLE usuario (
     id_usuario SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
@@ -22,7 +22,7 @@ CREATE TABLE Usuario (
 );
 
 -- Tabela Doação
-CREATE TABLE Doacao (
+CREATE TABLE doacao (
     id_doacao SERIAL PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_ong INT NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE Doacao (
 INSERT INTO categoria ( nome )
 VALUES ('Educação'),('Saúde'),('Meio Ambiente'),('Animais');
 
--- Insert da tabela ONG 
+-- Insert da tabela ong 
 INSERT INTO ong ( nome, descricao,id_categoria)
 VALUES 
 ('Educação para o futuro','Promove educação de qualidade para crianças carentes.',1),
@@ -51,7 +51,7 @@ VALUES
 ('Magno Santos','magno.santos@email.com','senha456'),
 ('Louise','Louise@email.com','senha789');
 
--- Insert da tabela usuario 
+-- Insert da tabela doacao 
 INSERT INTO doacao ( id_usuario, id_ong,valor)
 VALUES 
 (1,1,50.00),
@@ -64,7 +64,7 @@ VALUES
 
 SELECT * FROM categoria;
 
-SELECT id_doacao, valor from doacao;
+SELECT id_doacao, valor FROM doacao;
 
 SELECT nome,descricao FROM ong WHERE id_categoria = 2;
 
