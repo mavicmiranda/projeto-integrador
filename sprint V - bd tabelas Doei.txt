@@ -1,0 +1,73 @@
+-- Tabela Categoria
+CREATE TABLE Categoria (
+    id_categoria SERIAL PRIMARY KEY,
+    nome VARCHAR(50) NOT NULL
+);
+
+-- Tabela ONG
+CREATE TABLE ONG (
+    id_ong SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    id_categoria INT NOT NULL,
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id_categoria)
+);
+
+-- Tabela Usuário
+CREATE TABLE Usuario (
+    id_usuario SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
+);
+
+-- Tabela Doação
+CREATE TABLE Doacao (
+    id_doacao SERIAL PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    id_ong INT NOT NULL,
+    valor DECIMAL(10, 2) NOT NULL,
+    data_hora TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_usuario) REFERENCES Usuario(id_usuario),
+    FOREIGN KEY (id_ong) REFERENCES ONG(id_ong)
+);
+
+-- Insert da tabela categoria
+INSERT INTO categoria ( nome )
+VALUES ('Educação'),('Saúde'),('Meio Ambiente'),('Animais');
+
+-- Insert da tabela ONG 
+INSERT INTO ong ( nome, descricao,id_categoria)
+VALUES 
+('Educação para o futuro','Promove educação de qualidade para crianças carentes.',1),
+('Saúde para Todos','Apoia comunidades com atendimentos médicos gratuitos',2),
+('Salve o Planeta','ONG dedicada à proteção do meio ambiente',3),
+('Patas Felizes','Resgata e cuida de animais abandonados',4);
+
+-- Insert da tabela usuario 
+INSERT INTO usuario ( nome, email,senha)
+VALUES 
+('Maria Victoria','maria.victoria@email.com','senha123'),
+('Magno Santos','magno.santos@email.com','senha456'),
+('Louise','Louise@email.com','senha789');
+
+-- Insert da tabela usuario 
+INSERT INTO doacao ( id_usuario, id_ong,valor)
+VALUES 
+(1,1,50.00),
+(2,2,100.00),
+(3,3,75.00),
+(1,4,30.00);
+
+
+-- teste de SELECT das tabelas:
+
+SELECT * from doacao;
+
+SELECT id_doacao, valor from doacao;
+
+SELECT id_doacao, valor,data_hora as "Valor da doação" from doacao;
+
+SELECT 'Identificador da doação : ' || id_doacao || ' Valor da doação: ' || valor FROM doacao;
+
+SELECT 'Identificador da doação : ' || id_doacao || ' Valor da doação: ' as "Identificador da doação e valor" FROM doacao;
