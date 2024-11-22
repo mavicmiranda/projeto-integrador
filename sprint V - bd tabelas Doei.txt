@@ -62,12 +62,12 @@ VALUES
 
 -- teste de SELECT das tabelas:
 
-SELECT * from doacao;
+SELECT * FROM categoria;
 
 SELECT id_doacao, valor from doacao;
 
-SELECT id_doacao, valor,data_hora as "Valor da doação" from doacao;
+SELECT nome,descricao FROM ong WHERE id_categoria = 2;
 
-SELECT 'Identificador da doação : ' || id_doacao || ' Valor da doação: ' || valor FROM doacao;
+SELECT id_usuario,valor,data_hora FROM doacao WHERE valor > 45.00;
 
-SELECT 'Identificador da doação : ' || id_doacao || ' Valor da doação: ' as "Identificador da doação e valor" FROM doacao;
+SELECT id_usuario,valor,data_hora FROM doacao WHERE id_usuario = 1;
